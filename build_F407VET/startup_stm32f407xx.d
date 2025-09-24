@@ -1,0 +1,1 @@
+build_F407VET/startup_stm32f407xx.o: STM32F407VET/startup_stm32f407xx.s
