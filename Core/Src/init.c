@@ -1,0 +1,24 @@
+#include "init.h"
+void GPIO_init__Memory(void){};
+void GPIO_init_7_pin (void)
+{
+    RCC_AHB1ENR |= RCC_GPIOB_EN | RCC_GPIOC_EN;
+    BIT_SET(GPIOB_MODER, GPIO_PIN_OUT_7);
+    BIT_SET(GPIOB_OTYPER, GPIO_OFF);
+    BIT_SET(GPIOB_OSPEEDR, GPIO_PIN_MED_7);
+    BIT_SET(GPIOB_BSRR, GPIO_PIN_RESET_7);
+}
+
+void GPIO_init_14_pin (void)
+{
+    RCC_AHB1ENR |= RCC_GPIOB_EN | RCC_GPIOC_EN;
+    BIT_SET(GPIOB_MODER, GPIO_PIN_OUT_14);
+    BIT_SET(GPIOB_OTYPER, GPIO_OFF);
+    BIT_SET(GPIOB_OSPEEDR, GPIO_PIN_MED_14);
+    BIT_SET(GPIOB_BSRR, GPIO_PIN_RESET_14);
+}
+
+void GPIO_init_CMSIS(void)
+{
+    
+}

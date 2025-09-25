@@ -1,5 +1,5 @@
 #include <stdint.h>
-
+#include "init.h"
 int main(void){
     *(uint32_t*)(0x40023800UL + 0x30UL) |= 0x06UL; //Включение тактирования порта GPIOB
 
@@ -20,5 +20,23 @@ int main(void){
         }
     
     
+    }
+}
+int main(void)
+{
+     GPIO_init_7_pin ();
+     GPIO_init_14_pin ();
+    while (1)
+    {
+        if (BIT_READ(GPIOC_IDR, GPIO_PIN_13)) // опереатор if, в котором логически умножается IDR на значение
+        {
+            BIT_SET(GPIOB_BSRR, GPIO_PIN_SET_7);    //Синий светодиод
+            BIT_SET(GPIOB_BSRR, GPIO_PIN_RESET_14);   // Включает светодиод BSSR, если нажата кнопка
+        }
+        else
+        {
+            BIT_SET(GPIOB_BSRR, GPIO_PIN_SET_14);
+            BIT_SET(GPIOB_BSRR, GPIO_PIN_RESET_7);
+        }
     }
 }
